@@ -93,7 +93,8 @@ int tickCt = 0;*/
 
 int main() {
 
-	
+  char myword[] = { 'H', 'e', 'l', 'l', 'o', '\0' };
+	char data[8];
 	lm75b.open();
   init_double_buffering();
 	//Establish ethernet link
@@ -104,8 +105,9 @@ int main() {
   while (true) {
 
 		
-    potVal = pot.read();//To be used for shot power
-	  //Ethernet link
+      potVal = pot.read();//To be used for shot power
+	    screen->fillScreen(WHITE);
+      screen->setTextColor(BLACK, WHITE);
 
 		
 		
@@ -122,16 +124,23 @@ int main() {
 				game.processKey(JCR);
 			}
 			
-			game.setStrength(potVal);
+			/*game.setStrength(potVal);
 			game.draw();//display
-			game.loop();//game loop
-					if (Eth.link()) {
+			game.loop();//game loop*/
+			if (Eth.link()) {
                screen->setCursor(330,0);
 							 screen->printf("Online");
       } else {
                 screen->setCursor(330,0);
-								screen->printf("Offline");;
+								screen->printf("Offline");
       }
+			
+			//WriteCode//Eth.write(myword, sizeof(myword));
+			//WriteCode//Eth.send();
+			/*ReadCode*/ 
+			Eth.read(data, Eth.receive());
+			screen->setCursor(200,100);
+			screen->printf(data);
 			swap_double_buffers();
 			
     wait(0.01); //5 milliseconds

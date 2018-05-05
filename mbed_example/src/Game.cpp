@@ -375,7 +375,7 @@ void Game::applyPhysics() {
 }
 
 void Game::loop() {
-	switch (mode) {
+	switch (mode) {		
 	case DIRECTION:
 		checkCueBall();
 		drawShot();

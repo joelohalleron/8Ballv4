@@ -14,6 +14,10 @@
 #include "Variables.h"
 #include "Vector.h"
 
+struct Ball_Properties {
+	Vector center;
+};
+
 class Ball {
 
 	friend class BallArray;
