@@ -1,0 +1,20 @@
+--cpu Cortex-M4.fp
+".\objects\main.o"
+".\objects\matrix3x3.o"
+".\objects\vector.o"
+".\objects\ball.o"
+".\objects\physics.o"
+".\objects\interface.o"
+".\objects\table.o"
+".\objects\shot.o"
+".\objects\game.o"
+".\objects\cue.o"
+".\objects\startup_lpc407x_8x_177x_8x.o"
+".\objects\cmsis_nvic.o"
+".\objects\system_lpc407x_8x_177x_8x.o"
+".\objects\sys.o"
+".\objects\sys_helper.o"
+--strict --scatter ".\Objects\mbed_example.sct"
+../mbed_nxp_lpc408x/Objects/mbed.lib ../ebb/Objects/ebb.lib --any_placement=first_fit --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\mbed_example.map" -o .\Objects\mbed_example.axf
