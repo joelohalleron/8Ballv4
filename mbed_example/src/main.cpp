@@ -93,8 +93,7 @@ int tickCt = 0;*/
 
 int main() {
 
-  char myword[] = { 'H', 'e', 'l', 'l', 'o', '\0' };
-	char data[8];
+  char data[] = { 'H', 'e', 'l', 'l', 'o' };
 	lm75b.open();
   init_double_buffering();
 	//Establish ethernet link
@@ -135,12 +134,12 @@ int main() {
 								screen->printf("Offline");
       }
 			
-			//WriteCode//Eth.write(myword, sizeof(myword));
-			//WriteCode//Eth.send();
+			/*WriteCode*/Eth.write(data, sizeof(data));
+			/*WriteCode*/Eth.send();
 			/*ReadCode*/ 
-			Eth.read(data, Eth.receive());
+			//Eth.read(data, Eth.receive());
 			screen->setCursor(200,100);
-			screen->printf(data);
+			screen->printf("%s" ,data);
 			swap_double_buffers();
 			
     wait(0.01); //5 milliseconds
