@@ -199,7 +199,9 @@ void Physics::fixBallCollision(Ball* a, Ball* b) {
 			b->addXPosition(FACTOR);
 			a->subXPosition(FACTOR);
 		}
+		
 	}
+		
 }
 
 void Physics::fixTableCollision(Ball* b) {
@@ -231,17 +233,41 @@ void Physics::fixTableCollision(Ball* b) {
 
 void Physics::ballCollision(Ball* a, Ball* b) {
 	float angle;
+	Vector d;
+	float j; //Impulse
 	Vector aCenter, bCenter;
+	Vector v1, v2;
+	Vector newVelocity;
+	float Vrn;
 
 	aCenter = a->getPosition();
 	bCenter = b->getPosition();
 	angle = aCenter.calculateAngle(&bCenter);
-
+  
 	a->rotateSpeed(angle);
 	b->rotateSpeed(angle);
 
-	a->tradeXSpeed(b);
-  a->tradeYSpeed(b);
+	/*a->tradeXSpeed(b);
+  a->tradeYSpeed(b);*/
+	d = aCenter.subVector(bCenter);
+	d.Normalize();
+	vCollisionNormal = d;
+	
+	v1 = a->getSpeed();
+	v2 = b->getSpeed();
+	
+	vRelativeVelocity = v1.subVector(v2);
+	
+	Vrn = vRelativeVelocity.DotProduct(vCollisionNormal);
+	
+	j = (-(1+RESTITUTION) * (Vrn))/
+			( (vCollisionNormal.DotProduct(vCollisionNormal)) *
+			(1/BALL_MASS + 1/BALL_MASS));
+	
+	newVelocity = vCollisionNormal.ScalarProduct(j);
+	newVelocity = newVelocity.ScalarDivision(BALL_MASS);
+	a->setSpeed(a->getSpeed() += newVelocity);
+	b->setSpeed(a->getSpeed() += newVelocity);
 	
 	fixBallCollision(a, b);
 

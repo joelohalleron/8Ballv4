@@ -411,7 +411,7 @@
             </File>
             <File>
               <FileName>Ball.h</FileName>
-              <FileType>5</FileType>
+              <FileType>8</FileType>
               <FilePath>.\src\Ball.h</FilePath>
             </File>
             <File>

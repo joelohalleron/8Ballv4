@@ -12,6 +12,27 @@ Vector::Vector (float x0, float z0) {
 	z = z0;
 }
 
+//+= Operator for vector addition
+Vector& Vector::operator+=(Vector u)
+{
+	x += u.x;
+	z += u.z;
+	return *this;
+}
+
+//-= Operator for Vector subtraction 
+Vector& Vector::operator-=(Vector u)
+{
+	x -= u.x;
+	z -= u.z;
+	return *this;
+}
+
+Vector Vector::getVector()
+{
+	return Vector(x,z);
+}
+
 float Vector::getX () {
 	return x;
 }
@@ -38,9 +59,19 @@ void Vector::setVector (Vector* v) {
 	z = v->getZ();
 }
 
+void Vector::setVector (Vector v) {
+	x = v.getX();
+	z = v.getZ();
+}
+
 void Vector::addVector (Vector* v) {
 	x += v->x;
 	z += v->z;
+}
+
+void Vector::addVector (Vector v) {
+	x += v.x;
+	z += v.z;
 }
 
 void Vector::subVector (Vector* v) {
@@ -48,9 +79,56 @@ void Vector::subVector (Vector* v) {
 	z -= v->z;
 }
 
+Vector Vector::subVector (Vector v) {
+	Vector a;
+	a.setX(x - v.x);
+	a.setZ(z - v.z);
+	return a;
+}
+
+
+//Normalise
+void Vector::Normalize(void)
+{
+	float const tol = 0.0001f;
+	float m = (float) sqrt(x*x + z*z);
+	if(m<=tol) m=1;
+	x /= m;
+	z /= m;
+	
+	if(fabs(x) < tol) x = 0.0f;
+	if(fabs(z) < tol) z = 0.0f;	
+}
+
 void Vector::mulVector (Vector* v) {
 	x *= v->x;
 	z *= v->z;
+}
+
+Vector Vector::mulVector (Vector v) {
+	Vector a;
+	a.x = x * v.x;
+	a.z = z * v.z;
+	
+	return a;
+}
+float Vector::DotProduct(Vector v){
+	Vector a;
+	return (a.x * v.x + a.z*v.z);
+}
+
+Vector Vector::ScalarProduct(float s){
+	Vector a;
+	a.x = x*s;
+	a.z = z*s;
+	return a;
+}
+
+Vector Vector::ScalarDivision(float s)
+{
+  
+	return Vector(x/s, z/s);
+
 }
 
 void Vector::vectorRotation (float angle) {

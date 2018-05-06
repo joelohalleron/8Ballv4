@@ -52,7 +52,7 @@ public:
 	void setXPosition(float x);
 	void setYPosition(float y);
 	void setSpeed(Vector* v);
-
+	void setSpeed(Vector v);
 	// Position Functions
 	void addPosition(Vector* v);
 	void addXPosition(float value);

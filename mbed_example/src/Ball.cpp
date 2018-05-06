@@ -60,6 +60,10 @@ void Ball::setSpeed(Vector* v) {
 	speed.setVector(v);
 }
 
+void Ball::setSpeed(Vector v) {
+	speed.setVector(v);
+}
+
 void Ball::addPosition(Vector* v) {
 	center.addVector(v);
 }

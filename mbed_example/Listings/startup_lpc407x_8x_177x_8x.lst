@@ -406,10 +406,10 @@ Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\objects\startup_lpc407x_8x_177x_8x.d -o.\objects\startup_lpc4
 07x_8x_177x_8x.o -I"F:\Documents\Final Year\Individual Project\8Ballv4\mbed_exa
 mple\RTE" -IC:\Keil_v5\ARM\PACK\Keil\LPC4000_DFP\2.0.0\Device\Include -IC:\Keil
-_v5\ARM\CMSIS\Include --predefine="__UVISION_VERSION SETA 521" --predefine="COR
-E_M4 SETA 1" --list=.\listings\startup_lpc407x_8x_177x_8x.lst ..\mbed_nxp_lpc40
-8x\targets\cmsis\TARGET_NXP\TARGET_LPC408X\TOOLCHAIN_ARM_STD\startup_LPC407x_8x
-_177x_8x.S
+_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSIO
+N SETA 521" --predefine="CORE_M4 SETA 1" --list=.\listings\startup_lpc407x_8x_1
+77x_8x.lst ..\mbed_nxp_lpc408x\targets\cmsis\TARGET_NXP\TARGET_LPC408X\TOOLCHAI
+N_ARM_STD\startup_LPC407x_8x_177x_8x.S
 
 
 
@@ -1190,4 +1190,4 @@ PC408X\TOOLCHAIN_ARM_STD\startup_LPC407x_8x_177x_8x.S
 PC408X\TOOLCHAIN_ARM_STD\startup_LPC407x_8x_177x_8x.S
 Comment: __main used once
 2 symbols
-396 symbols in table
+397 symbols in table

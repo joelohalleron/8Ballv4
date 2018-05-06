@@ -3,6 +3,7 @@
 ".\objects\matrix3x3.o"
 ".\objects\vector.o"
 ".\objects\ball.o"
+".\objects\ball_1.o"
 ".\objects\physics.o"
 ".\objects\interface.o"
 ".\objects\table.o"

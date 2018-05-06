@@ -24,6 +24,12 @@ private:
 	int rayIndex;
 	int* collisionOrder;
 	int totalCollisions;
+	
+	Vector vForces; //Total resultant force for an object
+	Vector vImpactForces; //The resolution forces of an impact
+	Vector vCollisionNormal; //The collision normal for a collision
+	Vector vRelativeVelocity; //Relative velocity of two objects
+	
 
 public:
 	int firstCollision;
