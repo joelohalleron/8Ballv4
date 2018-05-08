@@ -98,6 +98,9 @@ int main() {
   init_double_buffering();
 	//Establish ethernet link
 	Eth.link();	
+	char buf[0x600];
+	char hello[] = "Hello World";//message to be sent
+	char recBuf[256];//Character array to be read into
 	//Draw the table
 	//Initialise display
 	
@@ -125,13 +128,30 @@ int main() {
 			game.setStrength(potVal);
 			game.draw();//display
 			game.loop();//game loop
-					if (Eth.link()) {
+		
+		// Send message to other board
+    if(Eth.write(hello, sizeof(hello) - 1) > 0)
+		{
+			Eth.send();
+		}
+		//Receive message from other board
+		if(Eth.receive() > 0)
+		{
+			Eth.read(recBuf, sizeof(recBuf));
+			screen->setCursor(400,0);
+			screen->printf("%s" ,recBuf);
+		}
+		
+			if (Eth.link()) {
                screen->setCursor(330,0);
 							 screen->printf("Online");
       } else {
                 screen->setCursor(330,0);
 								screen->printf("Offline");;
       }
+			
+			int size = Eth.receive();
+      Eth.read(buf, size);
 			swap_double_buffers();
 			
     wait(0.01); //5 milliseconds
