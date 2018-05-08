@@ -241,7 +241,6 @@ void Physics::ballCollision(Ball* a, Ball* b) {
 	b->rotateSpeed(angle);
 
 	a->tradeXSpeed(b);
-  a->tradeYSpeed(b);
 	
 	fixBallCollision(a, b);
 
